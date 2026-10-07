@@ -1,0 +1,7 @@
+interface:
+  display_name: "Academic Paper Talk"
+  short_description: "论文拆解、简洁学术 PPT、原图证据与逐页中文朗读稿"
+  icon_large: "./assets/preview.png"
+  default_prompt: "使用 $artifact-template-academic-paper-talk 阅读我提供的论文，制作简洁学术 PPT，讲清 Spark、总体流程、关键模块与公式、实验证据和研究启发，并写入可直接朗读的逐页中文备注。"
+policy:
+  allow_implicit_invocation: true
