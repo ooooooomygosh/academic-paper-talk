@@ -1,8 +1,12 @@
 # Academic Paper Talk
 
+[![Validate skill](https://github.com/ooooooomygosh/academic-paper-talk/actions/workflows/validate.yml/badge.svg)](https://github.com/ooooooomygosh/academic-paper-talk/actions/workflows/validate.yml)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](scripts/install.py)
+[![Code and docs MIT](https://img.shields.io/badge/code%20%26%20docs-MIT-green)](LICENSE)
+
 **从一篇论文，制作讲清科学问题、方法机制和实验证据的简洁学术 PPT。**
 
-[English](README.en.md) · [使用指南](docs/usage.md) · [内容与质量标准](docs/quality.md) · [贡献指南](CONTRIBUTING.md)
+[English](README.en.md) · [快速开始](#快速开始) · [页面示例](#页面示例) · [使用指南](docs/usage.md) · [常见问题](docs/faq.md) · [贡献指南](CONTRIBUTING.md)
 
 这是一个可安装的 Codex skill。它将论文阅读、汇报组织、PowerPoint 制作和逐页检查连接起来，默认使用中文讲稿与必要的 English 专业术语。上传全文 PDF 后，用一句话启动，得到可编辑 PPTX、逐页朗读稿和大纲。
 
@@ -12,25 +16,13 @@
 
 白底、深蓝文字、克制的蓝青强调。保留可读的论文原图，以原生流程图和表格解释关键关系。图片中的 Channel Deduction 是参考案例，新汇报会使用新论文的内容。
 
-## 它会讲清什么
+## 快速开始
 
-| 环节 | 具体要求 |
-| --- | --- |
-| 问题与 Spark | 作者发现了什么矛盾，关键观察为什么有价值 |
-| 贡献定位 | 最接近的方法已经做到哪里，本文具体推进了什么 |
-| 总体流程 | 谁在何时观察什么，输入如何变为输出，侧信息和反馈在哪里进入 |
-| 模块与公式 | 每一步的输入、处理、输出、必要性，以及关键变量的含义 |
-| 一次运行 | 带着一个样本走过计算、状态更新、下一步与停止规则 |
-| 实验 | baseline 的输入与资源、坐标与指标、结果、原因和结论范围 |
-| 研究启发 | 哪个真实瓶颈值得继续验证，怎样用最小实验检验 |
-
-每页 speaker notes 都是**可直接朗读的完整口播**。出处放页脚或来源附录，备注里不混入时长、操作提示和问答提纲。页数按论文、时长和用户要求调整。
-
-## 安装
-
-需要 Python 3.10+。下载或 clone 本仓库后，在仓库目录运行：
+准备：可使用 **Presentations** 能力的 Codex 环境，以及 Python 3.10+。在终端安装：
 
 ```bash
+git clone https://github.com/ooooooomygosh/academic-paper-talk.git
+cd academic-paper-talk
 python3 scripts/install.py
 ```
 
@@ -42,7 +34,7 @@ python3 scripts/install.py --force
 
 旧版会先备份到 skills 目录同级的 `skill-backups/`。自定义安装目录可用 `--skills-dir /path/to/skills`。也可以手动复制 `skills/artifact-template-academic-paper-talk/` 整个目录。若当前会话未发现新 skill，重新打开会话后再调用。
 
-## 使用
+### 上传论文并调用
 
 上传论文全文 PDF，然后输入：
 
@@ -57,6 +49,29 @@ python3 scripts/install.py --force
 - `逐页大纲.md`
 
 制作依赖当前 Codex 的 **Presentations** 能力和文档工具。仓库本身不包含模型服务、演示文稿运行库或一键离线 PPT 生成器。检查脚本独立使用 Python 标准库，不需要 API key。
+
+## 工作流程
+
+全文 PDF / DOI / 链接 → 科学问题与证据核对 → 逐页大纲 → 可编辑 PPTX 与完整讲稿 → 最终文件逐页渲染验收。
+
+| 输入 | 输出 |
+| --- | --- |
+| 全文论文；可选汇报时长、页数、受众或导师模板 | PPTX、逐页朗读稿、逐页大纲 |
+| 已有论文汇报 + 明确修改目标 | 修订后的 PPTX 与同步讲稿 |
+
+## 它会讲清什么
+
+| 环节 | 具体要求 |
+| --- | --- |
+| 问题与 Spark | 作者发现了什么矛盾，关键观察为什么有价值 |
+| 贡献定位 | 最接近的方法已经做到哪里，本文具体推进了什么 |
+| 总体流程 | 谁在何时观察什么，输入如何变为输出，侧信息和反馈在哪里进入 |
+| 模块与公式 | 每一步的输入、处理、输出、必要性，以及关键变量的含义 |
+| 一次运行 | 带着一个样本走过计算、状态更新、下一步与停止规则 |
+| 实验 | baseline 的输入与资源、坐标与指标、结果、原因和结论范围 |
+| 研究启发 | 哪个真实瓶颈值得继续验证，怎样用最小实验检验 |
+
+每页 speaker notes 都是**可直接朗读的完整口播**。出处放页脚或来源附录，备注里不混入时长、操作提示和问答提纲。页数按论文、时长和用户要求调整。
 
 ## 页面示例
 
@@ -92,6 +107,22 @@ scripts/                   安装与包完整性检查
 tests/                     安装与检查工具的回归测试
 docs/                      使用与质量说明
 ```
+
+## 文档与参与
+
+| 你想做什么 | 从这里开始 |
+| --- | --- |
+| 调整时长、页数、模板或讲稿 | [使用指南](docs/usage.md) |
+| 了解事实核对与验收要求 | [内容与质量标准](docs/quality.md) |
+| 排查安装、运行环境或检查失败 | [常见问题](docs/faq.md) |
+| 贡献规则、示例或工具修复 | [贡献指南](CONTRIBUTING.md) |
+| 查看变化和后续计划 | [更新记录](CHANGELOG.md) · [路线图](docs/roadmap.md) |
+
+欢迎通过 [Issues](https://github.com/ooooooomygosh/academic-paper-talk/issues) 提交可复现的问题，或通过 Pull Request 改进工作流程。新的示例请提供可分享的来源和逐页检查结果。
+
+### 仓库组织参考
+
+首页和文档结构参考了 [anthropics/skills](https://github.com/anthropics/skills) 的 skill 包说明、[obra/superpowers](https://github.com/obra/superpowers) 的流程与导航，以及 [Typer](https://github.com/fastapi/typer) 的快速开始组织。它们是文档组织参考；本项目的论文拆解规则来自下述汇报实践。
 
 ## 来源与许可
 
